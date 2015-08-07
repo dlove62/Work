@@ -1,4 +1,4 @@
-package OutputManagement;
+package main;
 
 public class getInputData {
 
