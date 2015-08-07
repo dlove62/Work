@@ -1,7 +1,7 @@
 package main;
 
 public class Line {
-	private String delims = "[ /,=]+";
+	private String delims = "[ /,=.*()']+";
 	private String[] tokens;
 
 	public Line(String line) {

@@ -44,6 +44,7 @@ public class ParseInputFile {
 			
 			while ((aLine = br.readLine()) != null) {
 				// System.out.println(aLine);
+				lineObj = new Line(aLine);
 				if (aLine.contains(" JOB ")) {
 					if (somethingToPrint) {
 						writeOutput(jobName, jobProgName, jobClass, jobMsgClass, jobMemberName, jobEnvironment,
@@ -51,7 +52,7 @@ public class ParseInputFile {
 								genFormId);
 						somethingToPrint = true;
 					}
-					// } else {
+
 					jobName = "";
 					jobProgName = "";
 					jobClass = "";
@@ -66,89 +67,47 @@ public class ParseInputFile {
 					genPrintDest = "";
 					genFormId = "";
 					somethingToPrint = true;
-					// }
-					String delims = "[ /,()']+";
-					String[] tokens = aLine.split(delims);
-					jobName = tokens[1];
-					jobProgName = tokens[4];
 
-					// for (int i = 0; i < tokens.length; i++) {
-					// System.out.println(tokens[i]);
-					// }
-				}
-				if (aLine.contains(" CLASS=")) {
-//					String delims = "[ /,=]+";
-//					String[] tokens = aLine.split(delims);
 					lineObj = new Line(aLine);
-//					jobClass = tokens[2];
+					jobName = lineObj.getToken(1);
+					jobProgName = lineObj.getToken(4);
+				}
+				else if (aLine.contains(" CLASS=")) {
 					jobClass = lineObj.getToken(2);
-					// System.out.println(tokens[2]);
 				}
-				if (aLine.contains("MSGCLASS=")) {
-					String delims = "[ /,=]+";
-					String[] tokens = aLine.split(delims);
-					jobMsgClass = tokens[2];
-					// System.out.println(tokens[2]);
+				else if (aLine.contains("MSGCLASS=")) {
+					jobMsgClass = lineObj.getToken(2);
 				}
-				if (aLine.contains(" SET JOBMBR")) {
-					String delims = "[ /,=]+";
-					String[] tokens = aLine.split(delims);
-					jobMemberName = tokens[4];
-					// System.out.println(tokens[4]);
+				else if (aLine.contains(" SET JOBMBR")) {
+					jobMemberName = lineObj.getToken(4);
 				}
-				if (aLine.contains(" SET ENV")) {
-					String delims = "[ /,=]+";
-					String[] tokens = aLine.split(delims);
-					jobEnvironment = tokens[4];
-					// System.out.println(tokens[4]);
+				else if (aLine.contains(" SET ENV")) {
+					jobEnvironment = lineObj.getToken(4);
 				}
-				if (aLine.contains(" SET  RG")) {
-					String delims = "[ /,=]+";
-					String[] tokens = aLine.split(delims);
-					jobRegion = tokens[4];
-					// System.out.println(tokens[4]);
+				else if (aLine.contains(" SET  RG")) {
+					jobRegion = lineObj.getToken(4);
 				}
-				if (aLine.contains(" EXEC ")) {
+				else if (aLine.contains(" EXEC ")) {
+					jobProgram = lineObj.getToken(4);
 					somethingToPrint = true;
-					String delims = "[ /,=]+";
-					String[] tokens = aLine.split(delims);
-					jobProgram = tokens[4];
-					// System.out.println(tokens[4]);
 				}
-				if (aLine.contains(" SYSOUT=(")) {
-					String delims = "[ /,=()]+";
-					String[] tokens = aLine.split(delims);
-					genSysNumber = tokens[1];
-					genPrintClass = tokens[4];
-					genWriterName = tokens[5];
-					// System.out.println(tokens[1] + ' ' +
-					// tokens[4] + ' ' +
-					// tokens[5]);
+				else if (aLine.contains(" SYSOUT=(")) {
+					genSysNumber = lineObj.getToken(1);
+					genPrintClass = lineObj.getToken(4);
+					genWriterName = lineObj.getToken(5);
 				}
-				if (aLine.contains(" DUMMY")) {
-					String delims = "[ /,=()]+";
-					String[] tokens = aLine.split(delims);
-					genSysNumber = tokens[1];
-					genPrintClass = tokens[3];
+				else if (aLine.contains(" DUMMY")) {
+					genSysNumber = lineObj.getToken(1);
+					genPrintClass = lineObj.getToken(3);
 					writeOutput(jobName, jobProgName, jobClass, jobMsgClass, jobMemberName, jobEnvironment, jobRegion,
 							jobProgram, genSysNumber, genPrintClass, genWriterName, genPrintDest, genFormId);
 					somethingToPrint = true;
-					// System.out.println(tokens[1] + ' ' +
-					// tokens[4] + ' ' +
-					// tokens[5]);
 				}
-				// genPrintDest = null;
-				// String genFormId = null;
-				if (aLine.contains(" DEST=")) {
-					String delims = "[ /,=]+";
-					String[] tokens = aLine.split(delims);
-					genPrintDest = tokens[2];
-					// System.out.println(tokens[2]);
+				else if (aLine.contains(" DEST=")) {
+					genPrintDest = lineObj.getToken(2);
 				}
-				if (aLine.contains(" OUTPUT=")) {
-					String delims = "[ /*.,=]+";
-					String[] tokens = aLine.split(delims);
-					genFormId = tokens[2];
+				else if (aLine.contains(" OUTPUT=")) {
+					genFormId = lineObj.getToken(2);
 					writeOutput(jobName, jobProgName, jobClass, jobMsgClass, jobMemberName, jobEnvironment, jobRegion,
 							jobProgram, genSysNumber, genPrintClass, genWriterName, genPrintDest, genFormId);
 					genSysNumber = "";
@@ -157,13 +116,13 @@ public class ParseInputFile {
 					genPrintDest = "";
 					genFormId = "";
 					somethingToPrint = false;
-					// System.out.println(tokens[2]);
 				}
 			}
 			if (somethingToPrint) {
 				writeOutput(jobName, jobProgName, jobClass, jobMsgClass, jobMemberName, jobEnvironment, jobRegion,
 						jobProgram, genSysNumber, genPrintClass, genWriterName, genPrintDest, genFormId);
 			}
+
 		} catch (Exception x) {
 			// TODO
 		} finally {
