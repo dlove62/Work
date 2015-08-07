@@ -68,8 +68,7 @@ public class ParseInputFile {
 					String[] tokens = aLine.split(delims);
 					jobName = tokens[1];
 					jobProgName = tokens[4];
-					// System.out.println(jobName);
-					// System.out.println(jobProgName);
+
 					// for (int i = 0; i < tokens.length; i++) {
 					// System.out.println(tokens[i]);
 					// }
