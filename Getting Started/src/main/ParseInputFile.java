@@ -29,16 +29,19 @@ public class ParseInputFile {
 		String genPrintDest = null;
 		String genFormId = null;
 		boolean somethingToPrint = false;
+		Line lineObj;
+		
 		try {
 			// int numberOfLines = 0;
 			FileReader reader = new FileReader(newFile);
 			textReader = new BufferedReader(reader);
-			// int numberOfLines = countLines("C:/Bimedit/work/JCL_Out.txt");
+			//int numberOfLines = countLines("C:/Bimedit/work/JCL_Out.txt");
 			BufferedReader br = null;
 			// String[] textData = new String[70];
 			// FileReader fr = new FileReader(path);
 			br = new BufferedReader(reader);
 			String aLine = null;
+			
 			while ((aLine = br.readLine()) != null) {
 				// System.out.println(aLine);
 				if (aLine.contains(" JOB ")) {
@@ -74,9 +77,11 @@ public class ParseInputFile {
 					// }
 				}
 				if (aLine.contains(" CLASS=")) {
-					String delims = "[ /,=]+";
-					String[] tokens = aLine.split(delims);
-					jobClass = tokens[2];
+//					String delims = "[ /,=]+";
+//					String[] tokens = aLine.split(delims);
+					lineObj = new Line(aLine);
+//					jobClass = tokens[2];
+					jobClass = lineObj.getToken(2);
 					// System.out.println(tokens[2]);
 				}
 				if (aLine.contains("MSGCLASS=")) {
