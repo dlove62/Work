@@ -1,0 +1,314 @@
+//JBAAPPAY JOB (JBAAPPAY),'ESPNAPA             ',
+//             CLASS=7,          VSE: JCL.JBDAYF7
+//             MSGCLASS=Z,
+//JOBMBR   SET JOBMBR=JBAAPPAY
+//ENV      SET ENV=P
+//RG       SET  RG=N                                        SHORT NAME
+//AAPPAY01 EXEC PGM=AAPPAY10
+//AGJ      DD  DUMMY
+//SYS004   DD  SYSOUT=(X,AAPPAYTX),
+//             DEST=PSF3835,
+//             OUTPUT=*.@A1NG
+//JBABCCLO JOB (SBABCCLO),'ESPNAPA             ',
+//             CLASS=8,          VSE: JCL.JBWEDMNT
+//             MSGCLASS=Z,
+//JOBMBR   SET JOBMBR=JBABCCLO
+//ENV      SET ENV=P
+//RG       SET  RG=N                                        SHORT NAME
+//JBABCOPN JOB (SBABCOPN),'ESPNAPA             ',
+//             CLASS=8,          VSE: JCL.JBWEDMNT
+//             MSGCLASS=Z,
+//JOBMBR   SET JOBMBR=JBABCOPN
+//ENV      SET ENV=P
+//RG       SET  RG=N                                        SHORT NAME
+//JBABFCLR JOB (SBABFCLR),'ESPNAPA             ',
+//             CLASS=7,          VSE: JCL.JBEOMF7
+//             MSGCLASS=Z,
+//JOBMBR   SET JOBMBR=JBABFCLR
+//ENV      SET ENV=P
+//RG       SET  RG=N                                        SHORT NAME
+//ABFCLR01 EXEC PGM=ABFCLR10
+//JBACHRPT JOB (JBACHRPT),'ESPNAPA             ',
+//             CLASS=6,
+//             MSGCLASS=Z,
+//JOBMBR   SET JOBMBR=JBACHRPT
+//ENV      SET ENV=P
+//RG       SET  RG=N
+//SYSIN    DD  DUMMY
+//ACHRPT03 EXEC PGM=ACHRPT10
+//SYS003   DD  SYSOUT=(X,ACHRPTTX),
+//             DEST=PSF3835,
+//             OUTPUT=*.@L11G
+//CCMAIL09 EXEC PGM=CCMAIL10
+//JBAGJCMB JOB (JBAGJCMB),'ESPNAPA             ',
+//             CLASS=7,
+//             MSGCLASS=Z,
+//JOBMBR   SET JOBMBR=JBAGJCMB
+//ENV      SET ENV=P
+//RG       SET  RG=N                                        SHORT NAME
+//JBAIMEXT JOB (JBAIMEXT),'ESPNAPA          ',
+//             CLASS=9,
+//             MSGCLASS=Z,
+//JOBMBR   SET JOBMBR=JBAIMEXT
+//ENV      SET ENV=P
+//RG       SET  RG=N
+//AIMEXT07 EXEC PGM=AIMEXT10
+//AIMEXT08 EXEC PGM=AIMEXT20
+//JBAIMEX1 JOB (JBAIMEX1),'ESPNAPA          ',
+//             CLASS=9,
+//             MSGCLASS=Z,
+//JOBMBR   SET JOBMBR=JBAIMEX1
+//ENV      SET ENV=P
+//RG       SET  RG=N
+//AIMEXT04 EXEC PGM=AIMEXT30
+//JBALTSO2 JOB (JBALTSO2),'ESPNAPA             ',
+//             CLASS=6,
+//             MSGCLASS=Z,
+//JOBMBR   SET JOBMBR=JBALTSO2
+//ENV      SET ENV=P
+//RG       SET  RG=N
+//JBALTSO4 JOB (JBALTSO4),'ESPNAPA             ',
+//             CLASS=6,
+//             MSGCLASS=Z,
+//JOBMBR   SET JOBMBR=JBALTSO4
+//ENV      SET ENV=P
+//RG       SET  RG=N
+//JBAMFEOM JOB (SBAMFEOM),'ESPNAPA             ',
+//             CLASS=7,          VSE: JCL.JBEOMS7
+//             MSGCLASS=Z,
+//JOBMBR   SET JOBMBR=JBAMFEOM
+//ENV      SET ENV=P
+//RG       SET  RG=N                                        SHORT NAME
+//AMFEOM01 EXEC PGM=AMFEOM10
+//SYS004   DD  SYSOUT=(X,AMFEOMTX),
+//             DEST=PSF3835,
+//             OUTPUT=*.@L11G
+//JBAMFOPN JOB (SBAMFOPN),'ESPNAPA             ',
+//             CLASS=6,          VSE: JCL.JBEOMF6A
+//             MSGCLASS=Z,
+//JOBMBR   SET JOBMBR=JBAMFOPN
+//ENV      SET ENV=P
+//RG       SET  RG=N                                        SHORT NAME
+//AMFOPN01 EXEC PGM=AMFOPN10
+//JBANRPUR JOB (SBANRPUR),'ESPNAPA             ',
+//             CLASS=7,
+//             MSGCLASS=Z,
+//JOBMBR   SET JOBMBR=JBANRPUR
+//ENV      SET ENV=P
+//RG       SET  RG=N                                        SHORT NAME
+//ANRPUR01 EXEC PGM=ANRPUR10
+//JBANRRST JOB (SBANRRST),'ESPNAPA             ',
+//             CLASS=7,
+//             MSGCLASS=Z,
+//JOBMBR   SET JOBMBR=JBANRRST
+//ENV      SET ENV=P
+//RG       SET  RG=N                                        SHORT NAME
+//ANRRST03 EXEC PGM=ANRRST10
+//JBANRSV1 JOB (SBANRSV1),'ESPNAPA             ',
+//             CLASS=7,
+//             MSGCLASS=Z,
+//JOBMBR   SET JOBMBR=JBANRSV1
+//ENV      SET ENV=P
+//RG       SET  RG=N                                        SHORT NAME
+//JBAPACCR JOB (SBAPACCR),'ESPNAPA             ',
+//             CLASS=0,          VSE: JCL.JBEOMBG
+//             MSGCLASS=Z,
+//JOBMBR   SET JOBMBR=JBAPACCR
+//ENV      SET ENV=P
+//RG       SET  RG=N                                        SHORT NAME
+//APACCR01 EXEC PGM=APACCR10
+//SYS003   DD  SYSOUT=(X,APACC1TX),
+//             DEST=PSF3835,
+//             OUTPUT=*.@L11G
+//SYS004   DD  SYSOUT=(X,APACC2TX),
+//             DEST=PSF3835,
+//             OUTPUT=*.@L11G
+//SYS005   DD  SYSOUT=(X,APACC3TX),
+//             DEST=PSF3835,
+//             OUTPUT=*.@L11G
+//SYS006   DD  SYSOUT=(X,APACC4TX),
+//             DEST=PSF3835,
+//             OUTPUT=*.@L11G
+//JBAPAPPR JOB (JBAPAPPR),'ESPNAPA             ',
+//             CLASS=7,          VSE: JCL.JBDAYF7
+//             MSGCLASS=Z,
+//JOBMBR   SET JOBMBR=JBAPAPPR
+//ENV      SET ENV=P
+//RG       SET  RG=N                                        SHORT NAME
+//APAPPR01 EXEC PGM=APAPPR10
+//SYS003   DD  SYSOUT=(R,APAPPRTX),
+//             DEST=PSF3835,
+//             OUTPUT=*.@P118
+//JBAPBPUR JOB (SBAPBPUR),'ESPNAPA             ',
+//             CLASS=7,
+//             MSGCLASS=Z,
+//JOBMBR   SET JOBMBR=JBAPBPUR
+//ENV      SET ENV=P
+//RG       SET  RG=N
+//APBPUR01 EXEC PGM=APBPUR10
+//JBAPBRST JOB (SBAPBRST),'ESPNAPA             ',
+//             CLASS=7,
+//             MSGCLASS=Z,
+//JOBMBR   SET JOBMBR=JBAPBRST
+//ENV      SET ENV=P
+//RG       SET  RG=N
+//APBRST03 EXEC PGM=APBRST10
+//JBAPDETL JOB (JBAPDETL),'ESPNAPA             ',
+//             CLASS=7,
+//             MSGCLASS=Z,
+//JOBMBR   SET JOBMBR=JBAPDETL
+//ENV      SET ENV=P
+//RG       SET  RG=N
+//** **  OUTPUT  :  AGJ-DUMMY                                        **
+//APDETL02 EXEC PGM=APDETL10
+//SYS004   DD  SYSOUT=(X,APDETLTX),
+//             DEST=PSF3835,
+//             OUTPUT=*.@A1NG
+//JBAPMADJ JOB (SBAPMADJ),'ESPNAPA             ',
+//             CLASS=6,          VSE: JCL.JBEOMF6A
+//             MSGCLASS=Z,
+//JOBMBR   SET JOBMBR=JBAPMADJ
+//ENV      SET ENV=P
+//RG       SET  RG=N                                        SHORT NAME
+//APMADJ01 EXEC PGM=APMADJ10
+//SYS004   DD  SYSOUT=(X,APMADJTX),
+//             DEST=PSF3835,
+//             OUTPUT=*.@L11G
+//JBAPMEMO JOB (SBAPMEMO),'ESPNAPA             ',
+//             CLASS=7,          VSE: JCL.JBDAYF7
+//             MSGCLASS=Z,
+//JOBMBR   SET JOBMBR=JBAPMEMO
+//ENV      SET ENV=P
+//RG       SET  RG=N                                        SHORT NAME
+//APMEMO01 EXEC PGM=APMEMO10
+//SYS003   DD  SYSOUT=(X,APMEMOTX),
+//             DEST=PSF3835,
+//             OUTPUT=*.@P118
+//JBAPMPUR JOB (SBAPMPUR),'ESPNAPA             ',
+//             CLASS=6,          VSE: JCL.JBEOMF6A
+//             MSGCLASS=Z,
+//JOBMBR   SET JOBMBR=JBAPMPUR
+//ENV      SET ENV=P
+//RG       SET  RG=N                                        SHORT NAME
+//APMPUR06 EXEC PGM=APMPUR10
+//SYS004   DD  SYSOUT=(X,APMPURTX),
+//             DEST=PSF3835,
+//             OUTPUT=*.@A1NG
+//JBAPMRST JOB (SBAPMRST),'ESPNAPA             ',
+//             CLASS=6,          VSE: JCL.JBEOMF6A
+//             MSGCLASS=Z,
+//JOBMBR   SET JOBMBR=JBAPMRST
+//ENV      SET ENV=P
+//RG       SET  RG=N                                        SHORT NAME
+//APMRST03 EXEC PGM=APMRST10
+//JBAPMUSE JOB (JBAPMUSE),'ESPNAPA             ',
+//             CLASS=6,
+//             MSGCLASS=Z,
+//JOBMBR   SET JOBMBR=JBAPMUSE
+//ENV      SET ENV=P
+//RG       SET  RG=N
+//APMUSE01 EXEC PGM=APMUSE10
+//JBAPMYCR JOB (JBAPMYCR),'ESPNAPA             ',
+//             CLASS=6,          VSE: JCL.JBEOMF6A
+//             MSGCLASS=Z,
+//JOBMBR   SET JOBMBR=JBAPMYCR
+//ENV      SET ENV=P
+//RG       SET  RG=N                                        SHORT NAME
+//APYCRM01 EXEC PGM=APYCRME
+//SYS004   DD  SYSOUT=(F,APYCRMTX),
+//             DEST=PSF3835,
+//             OUTPUT=*.@L11G
+//APMREG02 EXEC PGM=APMREG10
+//SYS004   DD  SYSOUT=(X,APMREGTX),
+//             DEST=PSF3835,
+//             OUTPUT=*.@A1NG
+//JBAPOPEN JOB (SBAPOPEN),'ESPNAPA             ',
+//             CLASS=6,
+//             MSGCLASS=Z,
+//JOBMBR   SET JOBMBR=JBAPOPEN
+//ENV      SET ENV=P
+//RG       SET  RG=N                                        SHORT NAME
+//APOPEN02 EXEC PGM=APOPEN10
+//SYS004   DD  SYSOUT=(X,APOP02TX),
+//             DEST=PSF3835,
+//             OUTPUT=*.@L11G
+//SYS003   DD  SYSOUT=(X,APOP01TX),
+//             DEST=PSF3835,
+//             OUTPUT=*.@L11G
+//JBAPPOZB JOB (JBAPPOZB),'ESPNAPA             ',
+//             CLASS=6,
+//             MSGCLASS=Z,
+//JOBMBR   SET JOBMBR=JBAPPOZB
+//ENV      SET ENV=P
+//RG       SET  RG=N
+//APPOZB01 EXEC PGM=APPOZB10
+//SYS004   DD  SYSOUT=(X,APPOZBTX)
+//JBAPURCD JOB (JBAPURCD),'ESPNAPA             ',
+//             CLASS=9,
+//             MSGCLASS=Z,
+//JOBMBR   SET JOBMBR=JBAPURCD
+//ENV      SET ENV=P
+//RG       SET  RG=N
+//APURCH01 EXEC PGM=APURCH10
+//SYS004   DD  SYSOUT=(R,APURCHTX),
+//             DEST=PSF3835,
+//             OUTPUT=*.@A1NG
+//SYS005   DD  SYSOUT=(R,APURCHTX),
+//             DEST=PSF3835,
+//             OUTPUT=*.@A1NG
+//JBAPURCM JOB (JBAPURCM),'ESPNAPA             ',
+//             CLASS=9,
+//             MSGCLASS=Z,
+//JOBMBR   SET JOBMBR=JBAPURCM
+//ENV      SET ENV=P
+//RG       SET  RG=N
+//APURCH01 EXEC PGM=APURCH10
+//SYS004   DD  SYSOUT=(R,APURCHTX),
+//             DEST=PSF3835,
+//             OUTPUT=*.@A1NG,
+//SYS005   DD  SYSOUT=(R,APURCHTX),
+//             DEST=PSF3835,
+//             OUTPUT=*.@A1NG,
+//JBAPURCW JOB (JBAPURCW),'ESPNAPA             ',
+//             CLASS=9,
+//             MSGCLASS=Z,
+//JOBMBR   SET JOBMBR=JBAPURCW
+//ENV      SET ENV=P
+//RG       SET  RG=N
+//APURCH01 EXEC PGM=APURCH10
+//SYS004   DD  SYSOUT=(R,APURCHTX),
+//             DEST=PSF3835,
+//             OUTPUT=*.@A1NG,
+//SYS005   DD  SYSOUT=(R,APURCHTX),
+//             DEST=PSF3835,
+//             OUTPUT=*.@A1NG,
+//JBAPVARR JOB (JBAPVARR),'ESPNAPA             ',
+//             CLASS=7,
+//             MSGCLASS=Z,
+//JOBMBR   SET JOBMBR=JBAPVARR
+//ENV      SET ENV=P
+//RG       SET  RG=N                                        SHORT NAME
+//APVARR01 EXEC PGM=APVARR10
+//SYS003   DD  SYSOUT=(X,APVARRTX),
+//             DEST=PSF3835,
+//             OUTPUT=*.@L11G
+//JBAPVCHR JOB (SBAPVCHR),'ESPNAPA             ',
+//             CLASS=7,          VSE: JCL.JBDAYF7
+//             MSGCLASS=Z,
+//JOBMBR   SET JOBMBR=JBAPVCHR
+//ENV      SET ENV=P
+//RG       SET  RG=N                                        SHORT NAME
+//APVCHR03 EXEC PGM=APVCHR10
+//SYS004   DD  SYSOUT=(X,APVCHRTX),
+//             DEST=PSF3835,
+//             OUTPUT=*.@A1NG
+//JBAPVCVR JOB (SBAPVCVR),'ESPNAPA             ',
+//             CLASS=7,          VSE: JCL.JBDAYF7
+//             MSGCLASS=Z,
+//JOBMBR   SET JOBMBR=JBAPVCVR
+//ENV      SET ENV=P
+//RG       SET  RG=N                                        SHORT NAME
+//APVCHR03 EXEC PGM=APVCHRVR
+//SYS004   DD  SYSOUT=(X,APVCVRTX),
+//             DEST=PSF3835,
+//             OUTPUT=*.@A1NG
